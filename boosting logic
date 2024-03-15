@@ -1,0 +1,36 @@
+To increase the influence of the 
+misclassified points, duplicate
+them 
+(i.e., Assign half of the total weights to 
+the misclassified examples)
+
+Assumption: we have a classifier 
+model that takes into account the 
+weights of data points
+
+Procedure:
+
+Assign equal weights wj to training data points
+
+Train a classifier: assign it a confidence factor 𝛼 sub t
+based on the weighted error rate 𝜖 sub t
+𝛼 sub t = 1/2 * ln(1 -𝜖 sub t / 𝜖 sub t)
+
+Give misclassified instances a higher weight
+• Assign half of the total weight to the 
+misclassified examples
+
+-Misclassified points
+w' = w/2 * 𝜖 sub t
+
+-Correctly classified points
+w' = w / 2(1 - 𝜖 sub t)
+
+Weights will sum to 0.5 + 0.5 = 1
+
+Repeat for T classifiers or until 𝜖 sub t >= 0.5
+
+The ensemble predictor is a weighted average of 
+the models (rather than majority vote)
+
+M(x) = sumnation for all of t up to T; 𝛼 sub t * M sub t(x)
